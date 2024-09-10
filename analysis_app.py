@@ -18,7 +18,7 @@ os.getenv("LANGCHAIN_TRACING_V2")
 os.getenv("LANGCCHAIN_PROJECT")
 
 # Get db
-db = SQLDatabase.from_url("sqlite:///test_database.db")
+db = SQLDatabase.from_uri("sqlite:///test_database.db")
 
 toolkit = SQLDatabaseToolkit(db=db, llm=ChatOpenAI(model="gpt-4o"))
 tools = toolkit.get_tools()
@@ -77,12 +77,7 @@ st.header("SQL Analysis Support")
 
 # Initialize session state with system prompt
 if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {
-            "role":"system", 
-            "content":"You are a helpful assistant. Help me with my math homework"
-        }
-    ]
+    st.session_state.messages = []
 
 # Messages
 for message in st.session_state.messages:
@@ -101,14 +96,11 @@ if prompt := st.chat_input("Message"):
         st.markdown(prompt)
     
     with st.chat_message('assistant'):
-        completion = llm.chat.completions.create(
-            model = "gpt-4o",
-            messages=st.session_state.messages,
-            temperature=1,
-            n=1,
-            stream=True,
+        response = app.invoke(
+            {"messages": [("user", prompt)]}
         )
-        response_content = st.write_stream(completion)
+        json_str = response["messages"][-1].tool_calls[0]["args"]["final_answer"]
+        response_content = st.markdown(json_str)
     
     st.session_state.messages.append(
         {

@@ -1,0 +1,23 @@
+﻿ProductID,ProductName,ProductType,BalanceSheet
+5001,Start Up Account,Current Account,L
+5002,Business Account,Current Account,L
+5003,Community Account,Current Account,L
+5004,Charity Account,Current Account,L
+5005,Simple Account,Current Account,L
+5006,1yr Fixed Term,Deposits,L
+5007,2yr Fixed Term,Deposits,L
+5008,3yr Fixed Term,Deposits,L
+5009,4yr Fixed Term,Deposits,L
+5010,5yr Fixed Term,Deposits,L
+5011,Ethical Corporate Bond,Investments,L
+5012,Onshore Investment Bond,Investments,L
+5013,Mutual Investment Bond,Investments,L
+5014,Ultrashort Bond,Investments,L
+5015,Income Growth Investment Bond,Investments,L
+5016,Unsecured Business Loan,Loans,A
+5017,Secured Business Loan,Loans,A
+5018,Short Term Loan,Loans,A
+5019,FlexiLoan,Loans,A
+5020,Revenue Based Loan,Loans,A
+5021,Commercial Investment Mortgage,Mortgages,A
+5022,Owner Occupier Mortgage,Mortgages,A
